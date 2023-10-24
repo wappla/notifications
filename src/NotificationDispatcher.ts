@@ -2,15 +2,8 @@ import EventTarget from './EventTarget'
 
 const DEFAULT_DURATION = 5000
 
-export enum ENotificationType {
-    SUCCESS = 'success',
-    ERROR = 'error',
-    INFO = 'info',
-    WARNING = 'warning',
-}
-
 export type NotificationData = {
-    type: ENotificationType
+    type: string
     title: string
     message?: string
 }
@@ -21,7 +14,7 @@ export type Notification = {
     data: NotificationData
 }
 
-export default class NotificationDispatcher extends EventTarget {
+export class NotificationDispatcher extends EventTarget {
     defaultDuration: number
     notifications: Notification[]
 
@@ -34,7 +27,7 @@ export default class NotificationDispatcher extends EventTarget {
     createNotification(
         data: NotificationData,
         duration = this.defaultDuration,
-        createdAt = Date.now(),
+        createdAt = Date.now()
     ): Notification {
         return {
             data,
@@ -68,13 +61,13 @@ export default class NotificationDispatcher extends EventTarget {
         this.dispatchNotification(notification)
     }
 
-    subscribe(listener) {
+    subscribe(listener: (notifications: Notification[]) => void) {
         this.addEventListener('changed', () =>
-            listener([...this.notifications]),
+            listener([...this.notifications])
         )
         return () => {
             this.removeEventListener('changed', () =>
-                listener([...this.notifications]),
+                listener([...this.notifications])
             )
         }
     }

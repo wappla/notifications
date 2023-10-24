@@ -31,7 +31,7 @@ export default class EventTargetPolyfill {
     dispatchEvent(event: Event) {
         const { type } = event
         if (typeof this.events[type] !== 'undefined') {
-            this.events[type].forEach((listener) => {
+            this.events[type].forEach((listener: any) => {
                 listener(event)
             })
         }
