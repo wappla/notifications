@@ -1,4 +1,4 @@
-<h1 align="center">Package/Project Title</h1>
+<h1 align="center">@dashdot/notifications</h1>
 <div align="center">
 
 <sub>Built with ❤︎ by
