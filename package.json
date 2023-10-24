@@ -1,7 +1,7 @@
 {
     "name": "@dashdot/notifications",
-    "version": "0.0.1",
-    "description": "Route commands",
+    "version": "0.0.2",
+    "description": "Dashdot notifications",
     "author": "Dashdot",
     "license": "ISC",
     "type": "module",
